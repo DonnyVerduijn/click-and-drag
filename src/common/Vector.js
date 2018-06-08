@@ -5,7 +5,7 @@ class Vector {
   }
 
   magnitude() {
-    return Math.abs(Math.sqrt(Math.pow(this.x, 2), Math.pow(this.y, 2)));
+    return Math.abs(Math.sqrt(this.x * this.x, this.y * this.y));
   }
 
   rotation() {

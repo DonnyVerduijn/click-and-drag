@@ -1,6 +1,6 @@
 {
   "name": "click-and-drag",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "library for adding simple click and drag events to DOM objects.",
   "main": "./src/index.js",
   "scripts": {
@@ -18,16 +18,23 @@
     "abstraction"
   ],
   "author": "Donny Verduijn",
-  "license": "ISC", 
+  "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.9.2",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"

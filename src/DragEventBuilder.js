@@ -1,21 +1,21 @@
-import Point from "./common/Point";
-import DragEvent from "./DragEvent";
-import isElement from "./utils/isElement";
+import DragEvent from './DragEvent';
+import isElement from './utils/isElement';
 
 const DragEventBuilder = ({ element, onDragEnded, onDragChanged }) => {
-  var pendingEvent = null;
+  let pendingEvent = null;
+  const DOMElement = element;
 
   const attachHandlers = () => {
-    element.onmousedown = mouseEvent => {
+    DOMElement.onmousedown = (mouseEvent) => {
       pendingEvent = DragEvent(mouseEvent);
     };
 
-    element.onmouseup = mouseEvent => {
+    DOMElement.onmouseup = (mouseEvent) => {
       onDragEnded(pendingEvent.finalize(mouseEvent));
       pendingEvent = null;
     };
 
-    element.onmousemove = mouseEvent => {
+    DOMElement.onmousemove = (mouseEvent) => {
       if (pendingEvent) {
         onDragChanged(pendingEvent.update(mouseEvent));
       }
