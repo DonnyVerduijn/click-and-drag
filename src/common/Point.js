@@ -7,7 +7,7 @@ class Point {
   subtract(point) {
     return new Point({
       x: this.x - point.x,
-      y: this.y - point.y
+      y: this.y - point.y,
     });
   }
 }

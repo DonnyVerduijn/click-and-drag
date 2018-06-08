@@ -1,22 +1,24 @@
-import Vector from "./common/Vector";
-import Point from "./common/Point";
-import radiansToDegrees from "./utils/radiansToDegrees";
-import ImmutableObject from "./ImmutableObject";
+import Vector from './common/Vector';
+import Point from './common/Point';
+import radiansToDegrees from './utils/radiansToDegrees';
+import ImmutableObject from './ImmutableObject';
 
-const DragEvent = mouseEvent => {
-  var startedAt = new Point({ x: mouseEvent.x, y: mouseEvent.y }) || null;
+const DragEvent = (onMouseDown) => {
+  const startedAt = new Point({ x: onMouseDown.x, y: onMouseDown.y }) || null;
 
   const getDirection = (rotation) => {
-    if(rotation > -135 && rotation < -45) {
-      return 'top';
-    } else if(rotation < 45 && rotation > -45) {
-      return 'right';
-    } else if(rotation > 45 && rotation < 135 ) {
-      return 'bottom';
-    } else if(rotation > 135 || rotation < -135) {
-      return 'left';
+    let direction = 'undecided';
+    if (rotation > -135 && rotation < -45) {
+      direction = 'top';
+    } else if (rotation < 45 && rotation > -45) {
+      direction = 'right';
+    } else if (rotation > 45 && rotation < 135) {
+      direction = 'bottom';
+    } else if (rotation > 135 || rotation < -135) {
+      direction = 'left';
     }
-  }
+    return direction;
+  };
 
   const createDragEvent = (mouseEvent) => {
     const endedAt = new Point({ x: mouseEvent.x, y: mouseEvent.y });
@@ -24,18 +26,18 @@ const DragEvent = mouseEvent => {
     const rotation = radiansToDegrees(distance.rotation());
 
     return ImmutableObject({
+      magnitude: distance.magnitude(),
+      direction: getDirection(rotation),
       startedAt,
       endedAt,
       distance,
-      magnitude: distance.magnitude(),
       rotation,
-      direction: getDirection(rotation)
     });
-  }
+  };
 
   return {
     update: createDragEvent,
-    finalize: createDragEvent
+    finalize: createDragEvent,
   };
 };
 
