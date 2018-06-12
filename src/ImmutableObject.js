@@ -11,7 +11,6 @@ const ImmutableObject = options =>
     prototype,
     Object.keys(options).reduce((accumulator, key) => {
       const isObject = typeof options[key] === 'object';
-      // eslint-disable-line no-param-reassign
       return {
         ...accumulator,
         [key]: Object.assign({}, immutableDescriptor, {
