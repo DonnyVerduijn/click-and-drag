@@ -1,15 +1,26 @@
 <DOCTYPE html>
-    <html>
 
     <head>
         <meta charset="utf-8" />
         <title>native-drag</title>
-        <link href="./main.css" type="css"/>
-        <script src="./build/click-and-drag.min.js"></script>
+        <link href="./main.css" rel="stylesheet" type="text/css" />
+        <script src="./../dist/click-and-drag.min.js"></script>
     </head>
 
     <body>
         <div id="App">
         </div>
+        <script> 
+            const element = draggable({
+                element: document.getElementById('App'),
+                onDragChanged: (event) => {
+                    console.log(event);
+                },
+                onDragEnded: (event) => {
+                    console.log(event);
+                },
+            });
+        </script>
     </body>
+
     </html>

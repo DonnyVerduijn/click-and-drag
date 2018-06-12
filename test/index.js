@@ -15,8 +15,8 @@ describe('DragEventBuilder', () => {
       },
     });
 
-    element.dispatchEvent(new MouseEvent('onmousedown', { clientX: 100, clientY: 100 }));
-    element.dispatchEvent(new MouseEvent('onmousemove', { clientX: 110, clientY: 100 }));
-    element.dispatchEvent(new MouseEvent('onmouseup', { clientX: 90, clientY: 100 }));
+    element.dispatchEvent(new MouseEvent('mousedown', { clientX: 100, clientY: 100 }));
+    element.dispatchEvent(new MouseEvent('mousemove', { clientX: 110, clientY: 100 }));
+    element.dispatchEvent(new MouseEvent('mouseup', { clientX: 90, clientY: 100 }));
   });
 });
