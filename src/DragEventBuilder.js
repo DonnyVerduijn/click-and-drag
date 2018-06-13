@@ -6,16 +6,16 @@ const DragEventBuilder = ({ element, onDragEnded, onDragChanged }) => {
   const DOMElement = element;
 
   const attachHandlers = () => {
-    DOMElement.addEventListener('mousedown', (mouseEvent) => {
+    DOMElement.addEventListener('mousedown', mouseEvent => {
       pendingEvent = DragEvent(mouseEvent);
     });
 
-    DOMElement.addEventListener('mouseup', (mouseEvent) => {
+    DOMElement.addEventListener('mouseup', mouseEvent => {
       onDragEnded(pendingEvent.finalize(mouseEvent));
       pendingEvent = null;
     });
 
-    DOMElement.addEventListener('mousemove', (mouseEvent) => {
+    DOMElement.addEventListener('mousemove', mouseEvent => {
       if (pendingEvent) {
         onDragChanged(pendingEvent.update(mouseEvent));
       }

@@ -1,11 +1,13 @@
 module.exports = {
-  extends: "airbnb-base",
+  extends: 'airbnb-base',
   env: {
     browser: true,
-    mocha: true
+    mocha: true,
   },
-  plugins: ["mocha", "chai-friendly"],
+  plugins: ['mocha', 'chai-friendly'],
   rules: {
-    "mocha/no-exclusive-tests": "error"
-  }
+    'mocha/no-exclusive-tests': 'error',
+    'arrow-parens': ['error', 'as-needed'],
+    'function-paren-newline': ['error', 'consistent'],
+  },
 };
