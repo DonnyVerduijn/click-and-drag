@@ -1,5 +1,4 @@
-
-module.exports = (config) => {
+module.exports = config => {
   config.set({
     preprocessors: {
       // add webpack as preprocessor
@@ -37,7 +36,11 @@ module.exports = (config) => {
     customLaunchers: {
       MyChromeHeadless: {
         base: 'ChromeHeadless',
-        flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223'],
+        flags: [
+          '--disable-translate',
+          '--disable-extensions',
+          '--remote-debugging-port=9223',
+        ],
       },
     },
   });
