@@ -1,8 +1,8 @@
 {
   "name": "click-and-drag",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "library for adding simple click and drag events to DOM objects.",
-  "main": "./dist/click-and-drag.min.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
     "start": "webpack-dev-server --mode development --open",
