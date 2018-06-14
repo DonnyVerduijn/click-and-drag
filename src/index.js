@@ -2,4 +2,4 @@ import DragEventBuilder from './DragEventBuilder';
 
 export default DragEventBuilder;
 
-window.draggable = DragEventBuilder;
+const draggable = DragEventBuilder; // eslint-disable-line no-unused-vars
