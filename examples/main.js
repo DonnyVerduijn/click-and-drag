@@ -9,13 +9,13 @@ window.onload = () => {
   draggable({
     element,
     onDragStarted: event => {
-      console.log(event);
+      console.log('onDragStarted', event); //eslint-disable-line
     },
     onDragChanged: event => {
-      console.log(event); //eslint-disable-line
+      console.log('onDragChanged', event); //eslint-disable-line
     },
     onDragEnded: event => {
-      console.log(event); //eslint-disable-line
+      console.log('onDragEnded', event); //eslint-disable-line
     },
   });
 };

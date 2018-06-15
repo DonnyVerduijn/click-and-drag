@@ -12,10 +12,8 @@ const DragEventBuilder = ({
 
   const attachHandlers = () => {
     DOMElement.addEventListener('mousedown', mouseEvent => {
-      pendingEvent = DragEvent(mouseEvent);
-      setTimeout(() => {
-        onDragStarted(pendingEvent.update(mouseEvent));
-      }, 50);
+      pendingEvent = DragEvent({ mouseEvent });
+      onDragStarted(pendingEvent.update(mouseEvent));
     });
 
     DOMElement.addEventListener('mouseup', mouseEvent => {

@@ -6,15 +6,15 @@ const immutableDescriptor = () => ({
   writable: false,
 });
 
-const ImmutableObject = options =>
+const ImmutableObject = properties =>
   Object.create(
     prototype,
-    Object.keys(options).reduce((accumulator, key) => {
-      const isObject = typeof options[key] === 'object';
+    Object.keys(properties).reduce((accumulator, key) => {
+      const isObject = typeof properties[key] === 'object';
       return {
         ...accumulator,
         [key]: Object.assign({}, immutableDescriptor, {
-          value: isObject ? ImmutableObject(options[key]) : options[key],
+          value: isObject ? ImmutableObject(properties[key]) : properties[key],
         }),
       };
     }, {}),

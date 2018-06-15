@@ -1,8 +1,8 @@
 module.exports = {
-//   entry: {
-//     app: './src/index',
-//     context: '/',
-//   },
+  //   entry: {
+  //     app: './src/index',
+  //     context: '/',
+  //   },
 
   module: {
     rules: [
