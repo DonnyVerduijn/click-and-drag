@@ -14,6 +14,7 @@ npm install click-and-drag
 import draggable from 'click-and-drag'
 const element = draggable({
     element: document.getElementById('app'),
+    onDragstarted: (event) => console.log(event),
     onDragChanged: (event) => console.log(event),
     onDragEnded: (event) => console.log(event)
 })
