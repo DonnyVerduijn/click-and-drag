@@ -3,9 +3,8 @@ import Point from './common/Point';
 import radiansToDegrees from './utils/radiansToDegrees';
 import ImmutableObject from './ImmutableObject';
 
-const DragEvent = options => {
-  const { mouseEvent, id } = options;
-  const startedAt = new Point({ x: mouseEvent.x, y: mouseEvent.y }) || null;
+const DragEvent = onMouseDown => {
+  const startedAt = new Point({ x: onMouseDown.x, y: onMouseDown.y }) || null;
   const createdAt = Date.now();
 
   const getDirection = rotation => {
@@ -22,8 +21,8 @@ const DragEvent = options => {
     return direction;
   };
 
-  const createDragEvent = event => {
-    const endedAt = new Point({ x: event.x, y: event.y });
+  const createDragEvent = mouseEvent => {
+    const endedAt = new Point({ x: mouseEvent.x, y: mouseEvent.y });
     const distance = new Vector(endedAt.subtract(startedAt));
     const rotation = radiansToDegrees(distance.rotation());
     const magnitude = distance.magnitude();
@@ -39,14 +38,12 @@ const DragEvent = options => {
       endedAt,
       distance,
       rotation,
-      id,
     });
   };
 
   return {
     update: createDragEvent,
     finalize: createDragEvent,
-    id,
   };
 };
 
