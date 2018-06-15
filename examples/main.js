@@ -1,11 +1,21 @@
 import draggable from './../src/index';
+import './main.css';
 
-draggable({
-  element: document.getElementById('App'),
-  onDragChanged: event => {
-    console.log(event); //eslint-disable-line
-  },
-  onDragEnded: event => {
-    console.log(event); //eslint-disable-line
-  },
-});
+window.onload = () => {
+  const element = document.createElement('div');
+  element.id = 'App';
+  document.body.appendChild(element);
+
+  draggable({
+    element,
+    onDragStarted: event => {
+      console.log(event);
+    },
+    onDragChanged: event => {
+      console.log(event); //eslint-disable-line
+    },
+    onDragEnded: event => {
+      console.log(event); //eslint-disable-line
+    },
+  });
+};
