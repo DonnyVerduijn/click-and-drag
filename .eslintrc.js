@@ -9,5 +9,6 @@ module.exports = {
     'mocha/no-exclusive-tests': 'error',
     'arrow-parens': ['error', 'as-needed'],
     'function-paren-newline': ['error', 'consistent'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };

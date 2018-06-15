@@ -1,13 +1,21 @@
 import DragEvent from './DragEvent';
 import isHTMLElement from './utils/isHTMLElement';
 
-const DragEventBuilder = ({ element, onDragEnded, onDragChanged }) => {
+const DragEventBuilder = ({
+  element,
+  onDragStarted,
+  onDragChanged,
+  onDragEnded,
+}) => {
   let pendingEvent = null;
   const DOMElement = element;
 
   const attachHandlers = () => {
     DOMElement.addEventListener('mousedown', mouseEvent => {
       pendingEvent = DragEvent(mouseEvent);
+      setTimeout(() => {
+        onDragStarted(pendingEvent.update(mouseEvent));
+      }, 50);
     });
 
     DOMElement.addEventListener('mouseup', mouseEvent => {

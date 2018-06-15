@@ -7,6 +7,9 @@ describe('DragEventBuilder', () => {
 
     DragEventBuilder({
       element,
+      onDragStarted: event => {
+        expect(event.direction).to.equal('undecided');
+      },
       onDragChanged: event => {
         expect(event.direction).to.equal('right');
       },

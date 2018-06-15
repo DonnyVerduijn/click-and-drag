@@ -1,12 +1,13 @@
 {
   "name": "click-and-drag",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "library for adding simple click and drag events to DOM objects.",
   "main": "./src/index.js",
   "scripts": {
     "test": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --config webpack/prod.config.js",
+    "start": "webpack-dev-server --config webpack/dev.config.js --open",
+    "deploy": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,9 @@
     "mocha": "^5.2.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.9.2",
+    "webpack-auto-inject-version": "^1.1.0",
     "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
   }
 }

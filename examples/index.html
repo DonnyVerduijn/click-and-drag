@@ -4,23 +4,12 @@
         <meta charset="utf-8" />
         <title>native-drag</title>
         <link href="./main.css" rel="stylesheet" type="text/css" />
-        <script src="./../dist/click-and-drag.min.js"></script>
     </head>
 
     <body>
         <div id="App">
         </div>
-        <script> 
-            const element = draggable({
-                element: document.getElementById('App'),
-                onDragChanged: (event) => {
-                    console.log(event);
-                },
-                onDragEnded: (event) => {
-                    console.log(event);
-                },
-            });
-        </script>
+        <script src="./bundle.js"></script>
     </body>
 
     </html>
