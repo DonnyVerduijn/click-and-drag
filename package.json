@@ -1,6 +1,6 @@
 {
   "name": "click-and-drag",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "library for adding simple click and drag events to DOM objects.",
   "main": "./src/index.js",
   "scripts": {
