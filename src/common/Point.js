@@ -1,5 +1,5 @@
 class Point {
-  constructor(options) {
+  constructor(options = {}) {
     this.x = options.x || 0;
     this.y = options.y || 0;
   }

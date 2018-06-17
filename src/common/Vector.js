@@ -1,7 +1,7 @@
 class Vector {
-  constructor(options) {
-    this.x = options.x;
-    this.y = options.y;
+  constructor(options = {}) {
+    this.x = options.x || 0;
+    this.y = options.y || 0;
   }
 
   magnitude() {
