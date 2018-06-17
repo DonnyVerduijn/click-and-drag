@@ -1,7 +1,7 @@
 const prototype = {};
 
 const immutableDescriptor = () => ({
-  enumberable: true,
+  enumerable: true,
   configurable: false,
   writable: false,
 });
@@ -19,5 +19,6 @@ const ImmutableObject = properties =>
       };
     }, {}),
   );
+
 
 export default ImmutableObject;
