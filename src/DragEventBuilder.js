@@ -1,4 +1,4 @@
-import DragEvent from './DragEvent';
+import DragEventFactory from './DragEventFactory';
 import isHTMLElement from './utils/isHTMLElement';
 
 const DragEventBuilder = ({
@@ -7,24 +7,22 @@ const DragEventBuilder = ({
   onDragChanged,
   onDragEnded,
 }) => {
-  let pendingEvent = null;
   const DOMElement = element;
+  const dragEventFactory = DragEventFactory();
 
   const attachHandlers = () => {
     DOMElement.addEventListener('mousedown', mouseEvent => {
-      pendingEvent = DragEvent(mouseEvent);
-      onDragStarted(pendingEvent.update(mouseEvent));
-    });
-
-    DOMElement.addEventListener('mouseup', mouseEvent => {
-      onDragEnded(pendingEvent.finalize(mouseEvent));
-      pendingEvent = null;
+      onDragStarted(dragEventFactory.create(mouseEvent));
     });
 
     DOMElement.addEventListener('mousemove', mouseEvent => {
-      if (pendingEvent) {
-        onDragChanged(pendingEvent.update(mouseEvent));
+      if (dragEventFactory.isEventPending()) {
+        onDragChanged(dragEventFactory.update(mouseEvent));
       }
+    });
+
+    DOMElement.addEventListener('mouseup', mouseEvent => {
+      onDragEnded(dragEventFactory.finalize(mouseEvent));
     });
   };
 
@@ -32,8 +30,8 @@ const DragEventBuilder = ({
     attachHandlers();
   } else {
     const errorMessage = `no HTMLElement provided to element property. 
-    ${element.constructor.name} provided instead.`;
-    throw Error(errorMessage);
+    ${element} provided instead.`;
+    throw new Error(errorMessage);
   }
 
   return DOMElement;
