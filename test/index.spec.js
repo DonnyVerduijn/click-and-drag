@@ -4,17 +4,20 @@ import DragEventBuilder from './../src/DragEventBuilder';
 describe('DragEventBuilder', () => {
   it('should return an object based on the point substration between onmousedown and onmousedown/up coords', () => {
     const element = document.createElement('div');
+    let onDragStartedEvent = {};
+    let onDragChangedEvent = {};
+    let onDragEndedEvent = {};
 
     DragEventBuilder({
       element,
       onDragStarted: event => {
-        expect(event.direction).to.equal('undecided');
+        onDragStartedEvent = event;
       },
       onDragChanged: event => {
-        expect(event.direction).to.equal('right');
+        onDragChangedEvent = event;
       },
       onDragEnded: event => {
-        expect(event.direction).to.equal('left');
+        onDragEndedEvent = event;
       },
     });
 
@@ -27,5 +30,9 @@ describe('DragEventBuilder', () => {
     element.dispatchEvent(
       new MouseEvent('mouseup', { clientX: 90, clientY: 100 }),
     );
+
+    expect(onDragStartedEvent.direction).to.equal('undecided');
+    expect(onDragChangedEvent.direction).to.equal('right');
+    expect(onDragEndedEvent.direction).to.equal('left');
   });
 });

@@ -1,16 +1,16 @@
+const testConfig = require('./webpack/test.config');
+
 module.exports = config => {
   config.set({
+    files: ['test/start.js'],
     preprocessors: {
-      // add webpack as preprocessor
-      'src/**/*.js': ['webpack', 'sourcemap'],
-      'test/**/*.js': ['webpack', 'sourcemap'],
+      'test/start.js': 'webpack',
     },
-    webpack: {
-      // karma watches the test entry points
-      // (you don't need to specify the entry option)
-      // webpack watches dependencies
-      // webpack configuration
-      mode: 'development',
+    webpack: testConfig,
+    reporters: ['progress', 'coverage-istanbul'],
+    coverageIstanbulReporter: {
+      reports: ['text'],
+      fixWebpackSourcePaths: true,
     },
     webpackMiddleware: {
       // webpack-dev-middleware configuration
@@ -20,19 +20,8 @@ module.exports = config => {
       devtool: 'inline-source-map',
     },
     frameworks: ['mocha', 'chai'],
-    files: [
-      // all files ending in "_test"
-      { pattern: 'test/**/*.js', watched: false },
-      // each file acts as entry point for the webpack configuration
-    ],
-    reporters: ['progress'],
-    port: 9876, // karma web server port
     colors: true,
     logLevel: config.LOG_INFO,
-    browsers: ['MyChromeHeadless'],
-    autoWatch: false,
-    // singleRun: false, // Karma captures browsers, runs the tests and exits
-    concurrency: Infinity,
     customLaunchers: {
       MyChromeHeadless: {
         base: 'ChromeHeadless',
@@ -43,5 +32,9 @@ module.exports = config => {
         ],
       },
     },
+    browsers: ['MyChromeHeadless'],
+    autoWatch: true,
+    singleRun: false, // Karma captures browsers, runs the tests and exits
+    concurrency: Infinity,
   });
 };

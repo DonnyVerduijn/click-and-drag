@@ -6,6 +6,8 @@ import ImmutableObject from './utils/ImmutableObject';
 class MouseEventMock {}
 const MouseEvent = window ? window.MouseEvent : MouseEventMock;
 
+class DragEvent {}
+
 const DragEventFactory = () => {
   let startedAt = null;
   let isEventPending = false;
